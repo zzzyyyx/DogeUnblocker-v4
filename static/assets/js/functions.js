@@ -25,8 +25,8 @@ if (blankerCheck === 'enabled') {
           const iframe = doc.createElement("iframe")
           const style = iframe.style
           const link = doc.createElement("link")
-          const name = localStorage.getItem("name") || "My Drive - Google Drive";
-          const icon = localStorage.getItem("icon") || "https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png";
+          const name = localStorage.getItem("name") || "Dashboard";
+          const icon = localStorage.getItem("icon") || "https://issaquah.instructure.com/favicon.ico";
           doc.title = name;
           link.rel = "icon";
           link.href = icon;
@@ -37,7 +37,7 @@ if (blankerCheck === 'enabled') {
           style.width = style.height = "100%"
           doc.head.appendChild(link);
           doc.body.appendChild(iframe)
-          location.replace("https://classroom.google.com")
+          location.replace("https://issaquah.instructure.com")
       }
   }
 }
@@ -253,5 +253,6 @@ function vAG() {
 if (window.location.protocol === "http:") {
   window.location.href = window.location.href.replace("http:", "https:");
 }
+
 
 console.log("%cJoin our Discord! discord.gg/unblocking", "color: cyan; font-size: 20px");
