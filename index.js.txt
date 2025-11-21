@@ -1,0 +1,56 @@
+const express = require('express');
+const app = express();
+
+// --- PASSWORD MIDDLEWARE ---
+app.use((req, res, next) => {
+  const password = req.query.pass;        
+  const correct = 'antisecurlyleague';    
+
+  if (req.path === '/') {
+    if (password === correct) {
+      next();
+    } else {
+      res.send(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>Password Required</title>
+          <style>
+            body { 
+              font-family: Arial; 
+              text-align: center; 
+              padding-top: 100px;
+            }
+            input {
+              padding: 8px;
+              font-size: 16px;
+            }
+            button {
+              padding: 8px 16px;
+              font-size: 16px;
+              cursor: pointer;
+            }
+          </style>
+        </head>
+        <body>
+          <h2>Enter Password</h2>
+          <form method="GET">
+            <input name="pass" type="password" placeholder="Password" />
+            <button type="submit">Enter</button>
+          </form>
+        </body>
+        </html>
+      `);
+    }
+  } else {
+    next();
+  }
+});
+
+// --- YOUR REAL WEBSITE ROUTE ---
+app.get('/', (req, res) => {
+  res.send('<h1>Welcome to your website!</h1><p>You passed the password page.</p>');
+});
+
+// --- START SERVER ---
+app.listen(3000, () => console.log('Server running'));
