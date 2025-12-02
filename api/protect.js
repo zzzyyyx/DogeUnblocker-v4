@@ -4,10 +4,34 @@ export default function handler(req, res) {
 
   // If correct password, show your site
   if (password === correct) {
-    return res.send(`
-      <h1>Welcome!</h1>
-      <p>You passed the password page.</p>
-    `);
+   return res.send(`
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <title>Protected Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding-top: 80px;
+      }
+      h1 {
+        font-size: 32px;
+        margin-bottom: 10px;
+      }
+      p {
+        font-size: 18px;
+        color: #444;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome inside!</h1>
+    <p>You successfully entered the password.</p>
+  </body>
+  </html>
+`);
+
   }
 
   // Otherwise show password form
